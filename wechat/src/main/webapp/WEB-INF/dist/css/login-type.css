@@ -1,0 +1,36 @@
+.login_prompt{
+	display: none;
+}
+.inputBox,.pass{
+	position: relative;
+}
+#div_verification{
+	width: 100%;
+	position: absolute;
+	top: -50px;
+	display: none;
+	opacity: 0;
+	margin-top: 0;
+}
+#verification{
+	display: block;
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+    text-indent: 30px;
+    border-radius: 3px;
+    background: url(../../img/login/error.png) #fff no-repeat 10px center;
+    color: #ef4545;
+    float: none;
+}
+.login_text i{
+	display: block;
+	width: 20px;
+	height: 10px;
+	background: url(../../img/login/triangle.png) no-repeat 0 0;
+	margin-left: 30px;
+}
+.login_img{
+	margin-bottom: 65px;
+}

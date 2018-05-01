@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxTemplateDao">
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from wx_template where id = #{id}
+	</delete>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxTemplate">
+    	select id,accountId,templateId,title,primaryIndustry,deputyIndustry,content,example from wx_template where id=#{id}
+    </select>
+	<delete id="deleteList">
+        delete from wx_template where accountId=#{accountId}
+	</delete>
+	<insert id="saveList" parameterType="java.util.List">
+		insert into wx_template (accountId,templateId,title,primaryIndustry,deputyIndustry,content,example) values 
+		<foreach collection="templateList" index="index" item="item" separator=",">
+			(#{item.accountId},#{item.templateId},#{item.title},#{item.primaryIndustry},#{item.deputyIndustry},#{item.content},#{item.example})
+		</foreach>
+	</insert>
+	<select id="findList" parameterType="java.lang.Integer" resultType="WxTemplate">
+    	select id,accountId,templateId,title,primaryIndustry,deputyIndustry,content,example from wx_template where accountId=#{accountId}
+    </select>
+    
+    <select id="findByTitle" resultType="WxTemplate">
+    	select id,accountId,templateId,title,primaryIndustry,deputyIndustry,content,example from wx_template where accountId=#{accountId} and title=#{title} order by id limit 1; 
+    </select>
+    <select id="findByTemplateId" parameterType="java.lang.Integer" resultType="WxTemplate">
+    	select id,accountId,templateId,title,primaryIndustry,deputyIndustry,content,example from wx_template where templateId=#{templateId}
+    </select>
+</mapper>

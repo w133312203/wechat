@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+  xmlns:p="http://www.springframework.org/schema/p"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xmlns:aop="http://www.springframework.org/schema/aop" 
+  xmlns:context="http://www.springframework.org/schema/context"  
+  xmlns:mvc="http://www.springframework.org/schema/mvc"  
+  xsi:schemaLocation="  
+    http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+    http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+    http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">  
+    
+    <!-- 当Spring容器启动完成后执行下面的这个Bean -->  
+    <bean class="com.hm.listener.WxAccessTokenListener"/>
+    <!-- <bean class="com.ehui.listener.TemplatePushListener"/> -->
+     
+    <!-- 为了能使用json串 -->
+	<mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 注解请求映射
+            	默认是ISO-88859-1，避免乱码这里设置为UTF-8 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value="text/html;charset=UTF-8" />
+            </bean>
+            <!-- 启动JSON格式的配置,自动将格式转换成JSON格式，不需要其他类 -->
+            <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/json;charset=UTF-8" />
+               <!--格式化返回json串时的日期格式  -->
+                 <property name="objectMapper">
+                    <bean class="org.codehaus.jackson.map.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+            
+            
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+	
+	<!-- 是用于激活那些已经在spring容器里注册过的bean上面的注解 -->
+    <context:annotation-config/>
+	
+    <!-- 对所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+	<context:component-scan base-package="com.hm">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+	</context:component-scan>  
+    
+    <bean id="multipartResolver" class="com.hm.listener.MyCommonsMultipartResolver">  
+    	<property name="maxUploadSize" value="10485760" />
+    	<property name="defaultEncoding" value="UTF-8" />  
+	</bean>
+	
+    <!--JSP视图解析器-->
+    <bean id="viewResolverJsp" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+        <property name="order" value="1"></property>
+    </bean>
+    
+    <!--HTML视图解析器-->
+	<bean id="viewResolverHTML" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true" />
+		<!-- 模板后缀，指定html页面为模板 -->
+		<property name="suffix" value=".html" />
+		<!-- 使用这个模板类来解析视图 -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<!-- 允许访问请求属性，默认为false -->
+		<property name="exposeRequestAttributes" value="true" />
+		<!-- 允许访问会话属性，默认为false -->
+		<property name="exposeSessionAttributes" value="true" />
+		<!-- 允许遇到重复的值，会将旧值覆盖 -->
+		<property name="allowSessionOverride" value="true" />
+		<!-- 页面上下文，类似于request.contextPath -->
+		<property name="requestContextAttribute" value="requestContext" />
+		<!-- 模板输出内容编码，此处应与defaultEncoding保持一致 -->
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="order" value="0"></property>
+	</bean>
+	
+    <!-- 配置资源过滤 -->
+    <mvc:resources mapping="/bower_components/**" location="/WEB-INF/bower_components/" />
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
+  	<mvc:resources mapping="/dist/**" location="/WEB-INF/dist/" />
+    <mvc:resources mapping="/img/**" location="/WEB-INF/img/" />
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
+    <mvc:resources mapping="/login/**" location="/WEB-INF/login/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/ueditor/**" location="/ueditor/"/>
+    
+    <!-- 拦截器 -->  
+    <mvc:interceptors>  
+        <!-- 多个拦截器，顺序执行 -->  
+        <mvc:interceptor>  
+        	<!-- 拦截范围 -->
+            <mvc:mapping path="/**"/>
+            <!-- 不被拦截范围 -->
+            <mvc:exclude-mapping path="/carService/api/**"/>
+            <mvc:exclude-mapping path="/api/**"/>
+            <mvc:exclude-mapping path="/bower_components/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/dist/**"/>
+            <mvc:exclude-mapping path="/img/**"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/login/**"/>
+            <mvc:exclude-mapping path="/ueditor/**"/>
+            <mvc:exclude-mapping path="/checkPassport"/>
+            <mvc:exclude-mapping path="/jsapi"/>
+            <mvc:exclude-mapping path="/weiXinResponse"/>
+            <mvc:exclude-mapping path="/jsapiPay"/>
+            <mvc:exclude-mapping path="/notifyUrl"/>
+            <mvc:exclude-mapping path="/auth"/>
+            <mvc:exclude-mapping path="/linkEhub"/>
+            <mvc:exclude-mapping path="/forgetPwd"/>
+            <mvc:exclude-mapping path="/validateCode"/>
+            <mvc:exclude-mapping path="/checkEuserEmail"/>
+            <mvc:exclude-mapping path="/checkEuserMobilenum"/>
+            <mvc:exclude-mapping path="/vCode"/>
+            <mvc:exclude-mapping path="/passwordEmail"/>
+            <mvc:exclude-mapping path="/showWxChannelListJson"/>
+            <mvc:exclude-mapping path="/getQrCode"/>
+            <!-- 自定义拦截控制器bean -->
+            <bean class="com.hm.interceptor.LoginInterceptor"></bean>  
+        </mvc:interceptor>  
+    </mvc:interceptors>
+    
+    <bean id="logHandle" class="com.hm.utils.LogHandle"></bean>
+	<!-- 哪些类的哪些方法参与事务 --> 
+	<aop:config proxy-target-class="false">
+		<aop:aspect ref="logHandle" >
+			<aop:pointcut expression="execution(* com.hm..*.*(..))" id="logPointCut"/>
+			<aop:after-throwing method="recordLog" throwing="e" pointcut-ref="logPointCut"/>
+		</aop:aspect>
+	</aop:config>
+     
+</beans>

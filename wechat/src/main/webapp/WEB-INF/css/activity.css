@@ -1,0 +1,218 @@
+.acti_xinjian{
+	height: 30px;
+	width: 175px;
+}
+.acti_fenzu{
+	width: 175px;
+}
+.acti_xinjian span{
+	cursor: pointer;
+	color: #6c93cc;
+}
+.acti_xinjian .fa_mods{
+	display: none;
+}
+.acti_xinjian .acti_xinjian_s{
+	float: right;
+	margin-right: 15px;
+}
+.acti_xinjian .acti_xinjian_a{
+	float: left;
+	margin-left: 15px;
+}
+.acti_fenzu .acti_fz{
+	width: 100%;
+    padding: 8px 10px 8px 10px;
+    position: relative;
+    margin-bottom: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.acti_fenzu .acti_fz span{
+	display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.acti_fenzu .acti_fz .acti_dian{
+	font-style: normal;
+	margin-right: 5px;
+}
+.acti_fenzu .acti_fz .acti_txt{
+    max-width: 75px;
+}
+.acti_fenzu .acti_fz .acti_shu{
+	margin-left: 6px;
+    border-radius: 8px;
+    background-color: #6c93cc;
+    color: #fff;
+    padding: 2px 6px;
+    transform: scale(0.833);
+    display: inline-block;
+    font-size: 10px;
+}
+.acti_fenzu .acti_fz.off{
+    color: #6c93cc;
+    background: #f2f6ff;
+}
+.acti_fenzu .acti_fz .acti_fz_set{
+	overflow: hidden;
+	float: right;
+	display: none;
+}
+.acti_fenzu .acti_fz .acti_fz_set i:hover{
+	color: #6c93cc;
+}
+.acti_fenzu .acti_fz .acti_fz_set i.fa_save{
+	display: none;
+}
+.acti_fenzu .acti_fz .acti_fz_set i.fa_remove{
+	margin-left: 5px;
+}
+.acti_fenzu .acti_fz{
+	overflow: hidden;
+}
+.acti_fenzu .acti_fz div{
+	display: inline-block;
+	float: left;
+}
+.acti_fenzu .acti_fz .acti_fz_inp{
+	display: none;
+}
+.acti_fenzu .acti_fz .acti_fz_inp input{
+	width: 90px;
+	padding: 5px 10px;
+	border: 1px solid #6c93cc;
+	border-radius: 3px;
+}
+.acti_all{
+	margin-top: 5px;
+}
+.acti_top{
+	padding: 20px 20px 0;
+	height: 42px;
+}
+.acti_all,.acti_group,.acti_remove{
+	float: left;
+	margin-right: 10px;
+}
+.acti_group,.acti_remove{
+	display: none;
+}
+.acti_right{
+	float: right;
+}
+.acti_all label{
+	font-weight: 500;
+	font-size: 12px;
+	overflow: hidden;
+}
+.acti_all label input{
+	float: left;
+	margin-top: 3px;
+	margin-right: 5px;
+}
+.acti_group{
+	position: relative;
+}
+.acti_group button,.acti_remove button{
+	-webkit-appearance: button;
+	font-size: 12px;
+	color: #666;
+    background-color: transparent;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 500;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    white-space: nowrap;
+    line-height: 1.5;
+    padding: 4px 15px;
+    font-size: 12px;
+    border-radius: 2px;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: relative;
+    margin-right: 8px;
+}
+.acti_group button i{
+	display: inline-block;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.acti_group button i:before{
+	content: "\f107";
+}
+.acti_group ul{
+	display: none;
+	width: auto;
+	padding: 10px 0;
+	position: absolute;
+	top: 32px;
+	left: 8px;
+	z-index: 1024;
+	background: #fff;
+	border-radius: 2px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+}
+.acti_group ul li{
+	padding: 5px 15px;
+	cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.acti_group ul li:hover{
+	background: #f2f6ff;
+}
+.acti_right{
+	overflow: hidden;
+	padding-right: 20px;
+}
+.acti_right div{
+	float: left;
+	margin: 0 10px;
+}
+.acti_right div label{
+	font-weight: 500;
+	font-size: 12px;
+}
+.acti_right div label input{
+	float: left;
+	margin-top: 2px;
+	margin-right: 5px;
+}
+.text-icon{
+	color: #d8d8dd;
+	font-style: inherit;
+	font-size: 18px;
+	cursor: pointer;
+}
+.text-icon:hover{
+	color: #6c93cc;
+}
+.acti_table td p{
+	margin-bottom: 5px;
+}
+.acti_table td p .acti_table_head{
+	font-size: 16px;
+	color: #6c93cc;
+}
+.acti_table td p .acti_table_no{
+	display: inline-block;
+	color: #fff;
+	background: rgb(237, 85, 101);
+	padding: 0px 4px;
+	font-size: 12px;
+	margin-left: 10px;
+}
+.acti_table td p .acti_table_ye{
+	display: inline-block;
+	color: #fff;
+	background: #6c93cc;
+	padding: 0px 4px;
+	font-size: 12px;
+	margin-left: 10px;
+}

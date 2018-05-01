@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxUserDao">
+	<insert id="save" parameterType="WxUser" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_user 
+			(accountId,subscribe,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagIds) 
+		values 
+			(#{accountId},#{subscribe},#{openid},#{nickname},#{sex},#{city},#{country},#{province},#{language},#{headimgurl},#{subscribetime},#{unionid},#{remark},#{groupid},#{tagIds})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from wx_user where id = #{id}
+	</delete>
+	<update id="update" parameterType="WxUser">
+		update wx_user set subscribe = #{subscribe},nickname = #{nickname},sex = #{sex},city = #{city},
+		country = #{country},province = #{province},language = #{language},headimgurl = #{headimgurl},
+		subscribetime = #{subscribetime},unionid = #{unionid},remark = #{remark},groupid = #{groupid},tagIds = #{tagIds} 
+		where id = #{id}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxUser">
+    	select id,accountId,subscribe,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagIds from wx_user where id=#{id}
+    </select>
+    <select id="findMax" parameterType="java.lang.Integer" resultType="WxUser">
+    	select openid from wx_user where id in (select max(id) from wx_user where accountId=#{accountId})
+    </select>
+	<select id="findList" parameterType="java.lang.Integer" resultType="WxUser">
+    	select id,accountId,subscribe,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagIds from wx_user where accountId=#{accountId}
+    </select>
+	<insert id="saveList" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_user (accountId,subscribe,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagIds) values 
+		<foreach collection="list" index="index" item="item" separator=",">
+			(#{item.accountId},#{item.subscribe},#{item.openid},#{item.nickname},#{item.sex},#{item.city},#{item.country},#{item.province},#{item.language},#{item.headimgurl},#{item.subscribetime},#{item.unionid},#{item.remark},#{item.groupid},#{item.tagIds})
+		</foreach>
+	</insert>
+	<delete id="deleteList">
+        delete from wx_user where accountId=#{accountId}
+	</delete>
+	<select id="findUserList" resultType="java.util.Map">
+		select id,accountId,openid,nickname,headimgurl,subscribetime,tagIds from wx_user where accountId = #{accountId} 
+		<if test="tagId!=null and tagId!=''">
+			and find_in_set(#{tagId},tagIds) 
+		</if>
+		<if test="search!=null and search!=''">
+			and (nickname like #{search} or openid like #{search}) 
+		</if>
+		 order by subscribetime desc limit #{first},#{max}
+	</select>
+	<select id="findUserCount" resultType="java.lang.Integer">
+		select count(id) from wx_user where accountId = #{accountId}  
+		<if test="tagId!=null and tagId!=''">
+			and find_in_set(#{tagId},tagIds) 
+		</if>
+		<if test="search!=null and search!=''">
+			and (nickname like #{search} or openid like #{search}) 
+		</if>
+		order by subscribetime desc
+	</select>
+	<update id="updateList" parameterType="java.util.List">
+		<foreach collection="userList" index="index" item="item" separator=";">
+			update wx_user set tagIds=#{item.tagIds} where openid=#{item.openid}
+		</foreach>
+	</update>
+	
+	<update id="updateTag">
+		update wx_user set tagIds = (case when tagIds is null then CONCAT(#{tagIdArr}) else CONCAT(tagIds,',', #{tagIdArr}) end) where openId in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
+	
+	<update id="updateSingleTag">
+		update wx_user set tagIds = #{tagIdArr} where openId = #{openId}
+	</update>
+	
+	<select id="findByOpenid" parameterType="java.lang.String" resultType="WxUser">
+    	select id,accountId,subscribe,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagIds from wx_user where openid=#{openid} order by id desc limit 1;
+    </select>
+    <!-- <select id="findListByChannelId" resultType="java.util.Map">
+		select wxu.* from wx_user wxu
+		LEFT JOIN wx_user_channel_relation wxuc ON wxu.openid=wxuc.openid
+		where wxuc.channelid=#{cid} and wxuc.status in(2,4)
+	    order by subscribetime desc limit #{first},#{max}
+	</select> -->
+    <select id="findChannelListById" resultType="java.util.Map">
+		select wxu.* from wx_user wxu
+		LEFT JOIN wx_user_channel_relation wxuc ON wxu.openid=wxuc.openid
+		where wxuc.channelid=#{cid}  and wxuc.status in (2,4)
+	</select>
+	  <select id="findListById" resultType="java.util.Map">
+		select wxu.* from wx_user wxu
+		LEFT JOIN wx_user_channel_relation wxuc ON wxu.openid=wxuc.openid
+		where wxuc.channelid=#{cid} and wxuc.status in(2,4)
+	    order by subscribetime desc 
+	</select> 
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.carService.dao.SubdivisionDao">
+	<insert id="save" parameterType="Subdivision"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_carService_subdivision
+		(carName,price,style,carId,guidancePrice,describes,horsepower,barePrice,displacement,carType,seatNum)
+		values
+		(#{carName},#{price},#{style},#{carId},#{guidancePrice},#{describes},#{horsepower},#{barePrice},#{displacement},#{carType},#{seatNum})
+	</insert>
+	
+	<update id="update">
+		update hm_carService_subdivision set carName = #{carName}, price = #{price}, style = #{style}, carId = #{carId}, guidancePrice = #{guidancePrice}, describes = #{describes}, horsepower = #{horsepower}, seatNum = #{seatNum}, barePrice = #{barePrice}, displacement = #{displacement}, carType = #{carType} where id = #{id}
+	</update>
+	
+	<delete id="deleteById">
+		delete from hm_carService_subdivision where id = #{id}
+	</delete>
+	
+	<select id="findById" resultType="Subdivision">
+		select * from hm_carService_subdivision where id = #{id}
+	</select>
+	
+	<select id="findList" resultType="java.util.Map">
+		select c.* from hm_carService_subdivision c where c.carId = #{carId}
+		<if test="search!=null and search!=''">
+			and (c.carName like #{search}) 
+		</if>
+		 order by c.id limit #{first},#{max}
+	
+	</select>
+	
+	<select id="findListByOBJ" resultType="Subdivision">
+		select c.* from hm_carService_subdivision c where c.carId = #{carId}
+	</select>
+	
+	<select id="findCount" resultType="java.lang.Integer">
+		select count(c.id) from hm_carService_subdivision c where c.carId = #{carId}
+		<if test="search!=null and search!=''">
+			and (c.carName like #{search}) 
+		</if>
+	</select>
+	
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.carService.dao.ConfigureContextDao">
+	
+	<insert id="save" parameterType="ConfigureContext"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_configure_context
+		(fieldId,context,subdivisionId,level)
+		values
+		(#{fieldId},#{context},#{subdivisionId},#{level})
+	</insert>
+	
+	
+	<insert id="saveList" parameterType="java.util.List"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_configure_context
+		(fieldId,context,subdivisionId,level)
+		values
+		<foreach collection="list" index="index" item="item" separator=",">
+			(#{item.fieldId},#{item.context},#{item.subdivisionId},#{item.level})
+		</foreach>
+	</insert>
+	
+	<select id="findAllList" resultType="java.util.HashMap">
+		select f.fieldName, (case when c.context is null then '' else c.context end) as context
+		from hm_configure_context c inner join hm_configure_field f on c.fieldId = f.id where c.subdivisionId = #{subdivisionId}
+		order by c.level;
+	</select>
+	
+	<select id="findList" resultType="java.util.HashMap">
+		select c.id as id, c.fieldId, c.context, c.subdivisionId, c.level, f.fieldName
+		from hm_configure_context c inner join hm_configure_field f on c.fieldId = f.id where c.subdivisionId = #{subdivisionId}
+		<if test="search!=null and search!=''">
+			and (f.fieldName like #{search}) 
+		</if>
+		order by c.level limit #{first},#{max}
+	
+	</select>
+	
+	<select id="findMaxLevel" resultType="java.lang.Integer">
+		select max(c.level) from hm_configure_context c where c.subdivisionId = #{subdivisionId}
+	</select>
+	
+	<select id="findCount" resultType="java.util.HashMap">
+		select count(c.id) as count,max(c.level) as level
+		from hm_configure_context c inner join hm_configure_field f on c.fieldId = f.id where c.subdivisionId = #{subdivisionId}
+		<if test="search!=null and search!=''">
+			and (f.fieldName like #{search}) 
+		</if>
+	</select>
+	
+	
+	<select id="findById" resultType="ConfigureContext">
+		select * from hm_configure_context c where c.id = #{id}
+	</select>
+	
+	<update id="update" parameterType="ConfigureContext">
+		update hm_configure_context set context = #{context}, level = #{level}, fieldId = #{fieldId} where id = #{id}
+	</update>
+	
+	<select id="findLevel" resultType="java.lang.Integer">
+		select c.id from hm_configure_context c where c.level = #{level} and c.subdivisionId = #{subdivisionId}
+	</select>
+	
+	<update id="updateLevel">
+		update hm_configure_context set level = level+1 where subdivisionId = #{subdivisionId} and level >=#{level}
+	</update>
+	
+	<delete id="deleteById">
+		delete from hm_configure_context where id=#{id}
+	</delete>
+	
+</mapper>

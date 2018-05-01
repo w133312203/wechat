@@ -1,0 +1,68 @@
+dl,dt,dd,ul,li{padding: 0; margin: 0;}
+#wrapper .wrapper.wrapper-content,
+#wrapper .container.record{padding: 0; margin: 0; width: 100%;}
+.record-left{
+	
+	position: relative; padding: 0px;
+}
+.record-left .dropScroll_1{width: 100%; display: inline-block; padding: 5px 15px;}
+.record-left .dropScroll_1 .btn-group{width: 100%;background: #f1f4fb;}
+.dropScroll_1 .btn{
+	width: 100%; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px;
+	text-align: left; padding: 6px 0px; background: #f1f4fb;
+}
+.dropScroll_1 .btn .caret{float: right; margin-top: 6px;}
+.dropScroll_1 .dropdown-menu{
+	width: 170%; padding:3px 10px; z-index: 9;
+	box-shadow: 0 4px 11px rgba(0,0,0,0.2); box-sizing: border-box;
+    border: 1px solid #969696;
+}
+.dropScroll_1 .dropdown-menu li{
+	width: 50%; float: left; display: inline-block; cursor: pointer; padding: 0px 5px;
+}
+.dropScroll_1 dl{margin: 0;}
+.dropScroll_1 dl dt{
+	width: 100%; font-size: 13px; color: #505050;
+}
+.dropScroll_1 dl dd{
+	width: 100%; font-size: 12px; color: #505050; padding: 4px 8px; margin: 2px 0px;
+}
+.dropScroll_1 dl dd:hover{
+	background: #3291c8; color: #ffffff;
+}
+
+/*--- 菜单 ---*/
+.menu-nav{
+	width: 100%; display: inline-block; background: #f3f3f4; font-size: 14px; font-weight: 200;
+	overflow: hidden;
+}
+
+.menu-nav .nav>li.active>a,
+.menu-nav .nav>li>a:hover,
+.menu-nav .nav>li>a.menu-Item.active{
+	color: #3291c8;
+}
+.menu-nav .nav>li>a{
+	padding: 9px 20px;
+}
+.menu-nav .nav>li>a>span.fa{font-size: 20px; margin-top: 0px;}
+.view-controls{
+	width: 100%; border-top: 1px solid #bcc3c5; padding:10px 15px;
+	position: absolute;bottom: 0px; left: 0px; color: #545c5f;
+}
+.view-controls dl dt{
+	font-size: 16px; font-weight: 500; padding: 4px 0px;
+}
+.view-controls dl dd{
+	font-size: 14px; cursor: pointer;
+}
+.view-controls dl dd a{
+	display: inline-block; padding:2px 15px; color: #545c5f;
+}
+.view-controls dl dd:hover a,
+.view-controls dl dd.active a{
+	color: #3291c8;
+}
+
+
+

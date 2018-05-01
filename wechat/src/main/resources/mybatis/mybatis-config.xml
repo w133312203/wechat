@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>    
+
+	<!--通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean-->
+	<typeAliases>
+		<typeAlias alias="EnterpriseUserPassport" type="com.hm.domain.EnterpriseUserPassport"/>
+		<typeAlias alias="EnterpriseUserInfo" type="com.hm.domain.EnterpriseUserInfo"/>
+		<typeAlias alias="Role" type="com.hm.domain.Role"/>
+		<typeAlias alias="OfficialAccounts" type="com.hm.domain.OfficialAccounts"/>
+		<typeAlias alias="WxGlobalParam" type="com.hm.domain.WxGlobalParam"/>
+		<typeAlias alias="WxTag" type="com.hm.domain.WxTag"/>
+		<typeAlias alias="WxUser" type="com.hm.domain.WxUser"/>
+		<typeAlias alias="WxMessage" type="com.hm.domain.WxMessage"/>
+		<typeAlias alias="WxMenu" type="com.hm.domain.WxMenu"/>
+		<typeAlias alias="WxSubMenu" type="com.hm.domain.WxSubMenu"/>
+		<typeAlias alias="WxKeywords" type="com.hm.domain.WxKeywords"/>
+		<typeAlias alias="WxNews" type="com.hm.domain.WxNews"/>
+		<typeAlias alias="WxText" type="com.hm.domain.WxText"/>
+		<typeAlias alias="WxSystemReply" type="com.hm.domain.WxSystemReply"/>
+		<typeAlias alias="WxMaterialNews" type="com.hm.domain.WxMaterialNews"/>
+		<typeAlias alias="WxMaterial" type="com.hm.domain.WxMaterial"/>
+		<typeAlias alias="WxChannel" type="com.hm.domain.WxChannel"/>
+		<typeAlias alias="WxChannelUser" type="com.hm.domain.WxChannelUser"/>
+		<typeAlias alias="WxTemplate" type="com.hm.domain.WxTemplate"/>
+		<typeAlias alias="WxEventTemplate" type="com.hm.domain.WxEventTemplate"/>
+		<typeAlias alias="Software" type="com.hm.domain.Software"/>
+		<typeAlias alias="Car" type="com.hm.carService.domain.Car"/>
+		<typeAlias alias="CarGroup" type="com.hm.carService.domain.CarGroup"/>
+		<typeAlias alias="Information" type="com.hm.carService.domain.Information"/>
+		<typeAlias alias="Subdivision" type="com.hm.carService.domain.Subdivision"/>
+		<typeAlias alias="ConfigureField" type="com.hm.carService.domain.ConfigureField"/>
+		<typeAlias alias="ConfigureContext" type="com.hm.carService.domain.ConfigureContext"/>
+		<typeAlias alias="CarImage" type="com.hm.carService.domain.CarImage"/>
+	   <!-- <typeAlias alias="WxMass" type="com.hm.domain.WxMass"/> -->
+		<typeAlias alias="Result" type="com.hm.domain.Result"/>
+	</typeAliases>
+	<plugins>
+  <!-- com.github.pagehelper为PageHelper类所在包名 -->
+  <plugin interceptor="com.github.pagehelper.PageHelper">
+    <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->    
+    <property name="dialect" value="mysql"/>
+  </plugin>
+</plugins>
+	
+</configuration>

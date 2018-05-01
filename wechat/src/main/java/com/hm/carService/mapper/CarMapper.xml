@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.carService.dao.CarDao">
+	<insert id="save" parameterType="Car"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_carService_car
+		(headImage,carName,price,groupId,softwareId,oldPrice,describes,avg,videoUrl,level,videoImage)
+		values
+		(#{headImage},#{carName},#{price},#{groupId},#{softwareId},#{oldPrice},#{describes},#{avg},#{videoUrl},#{level},#{videoImage})
+	</insert>
+	
+	<update id="update">
+		update hm_carService_car set headImage = (case when #{headImage} is null then headImage else #{headImage} end), carName = #{carName}, groupId = #{groupId}, price = #{price}, oldPrice = #{oldPrice}, describes = #{describes}, avg = #{avg}, videoUrl=#{videoUrl}, level=#{level}, videoImage=#{videoImage} where id = #{id}
+	</update>
+	
+	<delete id="deleteById">
+		delete from hm_carService_car where id = #{id}
+	</delete>
+	
+	<select id="findById" resultType="Car">
+		select * from hm_carService_car where id = #{id}
+	</select>
+	
+	<select id="findCarList" resultType="java.util.Map">
+		select c.id as id,headImage,carName,price,oldPrice,describes,avg,videoUrl,groupName,c.level,videoImage,c.groupId from hm_carService_car c left join hm_carService_car_group g on c.groupId = g.id where c.softwareId = #{softwareId}
+		<if test="groupId!=null and groupId!=''">
+			and c.groupId = #{groupId}
+		</if>
+		<if test="search!=null and search!=''">
+			and (carName like #{search}) 
+		</if>
+		 order by g.id,c.level,c.id limit #{first},#{max}
+	
+	</select>
+	
+	<select id="findCarCount" resultType="java.lang.Integer">
+		select count(c.id) from hm_carService_car c where c.softwareId = #{softwareId}
+		<if test="groupId!=null and groupId!=''">
+			and c.groupId = #{groupId}
+		</if>
+		<if test="search!=null and search!=''">
+			and (carName like #{search}) 
+		</if>
+	</select>
+	
+</mapper>

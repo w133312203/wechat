@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxMaterialDao">
+	<insert id="save" parameterType="WxMaterial" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_material (accountId,mediaId,name,url,picUrl,updateTime,type) values 
+		(#{accountId},#{mediaId},#{name},#{url},#{picUrl},#{updateTime},#{type})
+	</insert>
+	<update id="update" parameterType="WxMaterial">
+		update wx_material set picUrl = #{picUrl} where id = #{id}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxMaterial">
+    	select id,accountId,mediaId,name,url,picUrl,updateTime,type from wx_material where id=#{id}
+    </select>
+	<insert id="saveList" parameterType="java.util.List">
+		insert into wx_material (accountId,mediaId,name,url,updateTime,type) values 
+		<foreach collection="materialList" index="index" item="item" separator=",">
+			(#{item.accountId},#{item.mediaId},#{item.name},#{item.url},#{item.updateTime},#{item.type})
+		</foreach>
+	</insert>
+	<delete id="deleteByMediaId">
+        delete from wx_material where mediaId=#{mediaId}
+	</delete>
+	<delete id="deleteList">
+        delete from wx_material where accountId=#{accountId} and type = #{type}
+	</delete>
+	<select id="findMaterialList" resultType="java.util.Map">
+		select id,accountId,mediaId,name,url,picUrl,updateTime,type from wx_material where accountId = #{accountId} and type = #{type} 
+		<if test="search!=null and search!=''">
+			 
+		</if>
+		order by updateTime desc limit #{first},#{max}
+	</select>
+	<select id="findMaterialCount" resultType="java.lang.Integer">
+		select count(id) from wx_material where accountId = #{accountId} and type = #{type} 
+		<if test="search!=null and search!=''">
+			  
+		</if>
+		order by updateTime
+	</select>
+</mapper>

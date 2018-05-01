@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxKeywordsDao">
+	<insert id="save" parameterType="WxKeywords" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_keywords 
+			(accountId,keywords,type,status) 
+		values 
+			(#{accountId},#{keywords},#{type},#{status})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from wx_keywords where id = #{id}
+	</delete>
+	<update id="update" parameterType="WxKeywords">
+		update wx_keywords set keywords = #{keywords},status = #{status} where id = #{id}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxKeywords">
+    	select id,accountId,keywords,type,status from wx_keywords where id=#{id}
+    </select>
+    <select id="findByKeywords" parameterType="java.lang.Integer" resultType="WxKeywords">
+    	select id,accountId,keywords,type,status from wx_keywords where accountId = #{accountId} and keywords=#{keywords}
+    </select>
+    <select id="findList" resultType="java.util.Map">
+		select k.id,k.keywords from wx_keywords k where k.accountId = #{accountId} order by k.id desc
+	</select>
+	<select id="findKeywordsList" resultType="java.util.Map">
+		<if test="type==0">
+			select k.id,k.accountId,k.keywords,k.type,k.status,t.content from wx_keywords k left join wx_text t on k.id=t.keywordsId 
+		</if>
+		<if test="type==1">
+			select k.id,k.accountId,k.keywords,k.type,k.status from wx_keywords k 
+		</if>
+		where k.accountId = #{accountId} and k.type = #{type}
+		<if test="search!=null and search!=''">
+			and k.keywords like #{search} 
+		</if>
+		 order by k.id desc limit #{first},#{max}
+	</select>
+	<select id="findKeywordsCount" resultType="java.lang.Integer">
+		select count(id) from wx_keywords where accountId = #{accountId} and type = #{type} 
+		<if test="search!=null and search!=''">
+			and keywords like #{search} 
+		</if>
+	</select>
+</mapper>

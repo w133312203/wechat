@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.carService.dao.ConfigureFieldDao">
+	
+	<insert id="save" parameterType="ConfigureField"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_configure_field
+		(fieldName,type,softwareId)
+		values
+		(#{fieldName},#{type},#{softwareId})
+	</insert>
+	
+	<select id="findById" resultType="ConfigureField">
+		select * from hm_configure_field c where c.id = #{id};
+	</select>
+	
+	<delete id="deleteById">
+		delete from hm_configure_field where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="ConfigureField">
+		update hm_configure_field set fieldName = #{fieldName},type=#{type} where id = #{id}
+	</update>
+	
+	<select id="findAllList" resultType="ConfigureField">
+		select c.* from hm_configure_field c where c.softwareId = #{softwareId}
+	</select>
+	
+	<select id="findNoConfigureField" resultType="ConfigureField">
+		select f.id, f.fieldName, f.type from hm_configure_field f left join (select ct.id, ct.fieldId, ct.context, ct.subdivisionId, ct.level from hm_configure_context ct where ct.subdivisionId = #{subdivisionId} ) c on c.fieldId = f.id where c.id is null and f.softwareId = #{softwareId} 
+	</select>
+	
+	<select id="findList" resultType="ConfigureField">
+		select c.* from hm_configure_field c where c.softwareId = #{softwareId}
+		<if test="search!=null and search!=''">
+			and (c.fieldName like #{search}) 
+		</if>
+		 order by c.id limit #{first},#{max}
+	
+	</select>
+	
+	<select id="findCount" resultType="java.lang.Integer">
+		select count(c.id) from hm_configure_field c where c.softwareId = #{softwareId}
+		<if test="search!=null and search!=''">
+			and (c.fieldName like #{search}) 
+		</if>
+	</select>
+	
+</mapper>

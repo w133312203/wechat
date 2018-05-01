@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.EnterpriseUserInfoDao">
+
+	<select id="findEnterpriseUserInfoByPassportId" resultType="EnterpriseUserInfo">
+		select * from hui_enterprise_user_info ei where ei.passportId =
+		#{passportId}
+	</select>
+	<update id="update" parameterType="EnterpriseUserInfo">
+		update hui_enterprise_user_info set realName = #{realName},
+		companyName = #{companyName} ,position = #{position}
+		<if test="headImage!=null and headImage!=''">
+			,headImage = #{headImage}
+		</if>
+		where id = #{id}
+	</update>
+	<insert id="save" parameterType="com.hm.domain.EnterpriseUserInfo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		hui_enterprise_user_info
+		(headImage,passportId,realName,companyName,position) values
+		(#{headimage},#{passportId},#{realName},#{companyName},#{position})
+	</insert>
+</mapper>

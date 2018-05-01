@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxMaterialNewsDao">
+	<update id="update" parameterType="WxMaterialNews">
+		update wx_material_news set picUrl = #{picUrl} where id = #{id}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxMaterialNews">
+    	select id,accountId,mediaId,title,author,showCoverPic,digest,content,contentSourceUrl,thumbMediaId,url,thumbUrl,picUrl,createTime,updateTime,sortLevel from wx_material_news where id=#{id}
+    </select>
+	<insert id="saveList" parameterType="java.util.List">
+		insert into wx_material_news (accountId,mediaId,title,author,showCoverPic,digest,content,contentSourceUrl,thumbMediaId,url,thumbUrl,createTime,updateTime,sortLevel) values 
+		<foreach collection="newsList" index="index" item="item" separator=",">
+			(#{item.accountId},#{item.mediaId},#{item.title},#{item.author},#{item.showCoverPic},#{item.digest},#{item.content},#{item.contentSourceUrl},#{item.thumbMediaId},#{item.url},#{item.thumbUrl},#{item.createTime},#{item.updateTime},#{item.sortLevel})
+		</foreach>
+	</insert>
+	<delete id="deleteByMediaId">
+        delete from wx_material_news where mediaId=#{mediaId}
+	</delete>
+	<delete id="deleteList">
+        delete from wx_material_news where accountId=#{accountId}
+	</delete>
+	<select id="findNewsList" resultType="java.util.Map">
+		select id,accountId,mediaId,title,author,showCoverPic,digest,content,contentSourceUrl,thumbMediaId,url,thumbUrl,createTime,updateTime,sortLevel from wx_material_news where accountId = #{accountId} 
+		<if test="search!=null and search!=''">
+			and (title like #{search} or author like #{search} or digest like #{search}) 
+		</if>
+		group by mediaId order by updateTime desc limit #{first},#{max}
+	</select>
+	<select id="findNewsCount" resultType="java.lang.Integer">
+		select count(id) from (select id from wx_material_news where accountId = #{accountId} 
+		<if test="search!=null and search!=''">
+			and (title like #{search} or author like #{search} or digest like #{search})   
+		</if>
+		group by mediaId order by updateTime) wx_material_news
+	</select>
+	<select id="findListByMediaId" resultType="java.util.Map">
+		<if test="alias==0">
+			select id,accountId,mediaId,title,author,showCoverPic,digest,content,contentSourceUrl,thumbMediaId,url,thumbUrl,picUrl,createTime,updateTime,sortLevel from wx_material_news where accountId = #{accountId} and mediaId = #{mediaId} order by sortLevel
+		</if>
+		<if test="alias==1">
+			select id,mediaId media_id,title,author,showCoverPic show_cover_pic,digest,content,contentSourceUrl content_source_url,thumbMediaId thumb_media_id,url,thumbUrl thumb_url,picUrl,sortLevel from wx_material_news where accountId = #{accountId} and mediaId = #{mediaId} order by sortLevel
+		</if>
+		
+	</select>
+</mapper>

@@ -1,0 +1,68 @@
+.col-lg-6{
+	/* width: 33%; */
+}
+	
+p.titles{
+	margin: 15px 0px 0px 25px;
+	font-size: 23px;
+}
+.panel-body hr{margin-top:5px; margin-bottom:13px;}	
+p.unto{
+	margin: 0px 0px 0px 28px;
+}
+
+div.img{
+	float: right;
+	margin: -22px 13px 6px 0px;
+}
+  	
+div.model{
+	padding-bottom: 15px;
+	overflow: hidden;
+	border: none;
+	background-color: #fff;
+	border-radius: 0px;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	box-sizing: border-box;
+}
+  	
+.user_info_div {
+	background-color: #86ced3;
+	color: #daeff1;
+	margin: 15px 0px 0px 10px;
+}
+
+div.senior {
+	width: 25%;
+	float: left;
+	padding-left: 80px;
+	padding-right: 15px;
+	min-height: 1px;
+	position: relative;
+}
+
+.panel .title{padding:0px;margin-bottom:5px;}
+.panel .title span{display:inline-block; font-size:16px; color:#333333; border-left:4px solid #2daff6; padding-left:8px;}
+.panel-body label{font-weight: normal;}
+
+
+
+/*----------------------*/
+.panel-heading{
+	font-size: 16px; padding-left:0px;
+}
+.panel-heading div.btn{float:right;}
+
+.panel-body.kfinfo .list1{
+	font-size: 16px; padding-left:0px; padding-right:25px;
+}
+.panel-body.kfinfo .list2{
+	font-size: 16px;padding-left:15px; padding-right:15px;
+}
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.SoftwareDao">
+	
+	<insert id="save" parameterType="software"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_software
+		(type,euserId)
+		values
+		(#{type},#{euserId})
+	</insert>
+	
+	<select id="findByEuserId" resultType="software">
+		select * from hm_software where euserId = #{euserId} and type = #{type};
+	</select>
+	
+</mapper>

@@ -1,0 +1,329 @@
+.headport{
+	position: relative;
+	overflow: hidden;
+}
+.headport .headImg{
+	margin-top: 0;
+}
+.headport .headImg img{
+	border-radius: 50%;
+}
+.headdetail{
+	float: initial;
+	width: 100%;
+	padding-left: 90px;
+	margin-top: 10px;
+	min-height:75px;
+}
+.client_ils,.group_list{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.client_rela{
+	position: relative;
+	padding-left: 110px;
+}
+.client_left{
+	position: absolute;
+	left: 0;
+	width: 100px;
+	overflow: hidden;
+	text-align: right;
+	height: 35px;
+	line-height: 35px;
+}
+.client_right{
+	display: block;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	padding-left: 5px;
+	margin-top: 7px;
+}
+.client_a .but{
+	width: 100%;
+	background: #fff;
+	height: 35px;
+	line-height: 35px;
+	cursor: pointer;
+	position: relative;
+}
+.client_label .client_right{
+	min-height: 35px;
+	height: auto;
+}
+.client_label .client_right .client_label_add,
+.client_label .client_right .client_label_list
+{
+	display:inline;
+}
+.client_label .client_right .client_label_add span{
+	padding: 0px 10px;
+	color: #999;
+	border-radius: 5px;
+	margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    border: 1px #999 solid;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.client_label .client_right .client_label_add span a{
+	color: #999;
+}
+.client_a .but .caret{
+	position: absolute;
+    top: 50%;
+    right: 12px;
+    margin-top: -2px;
+    color: #676a6c;
+}
+.client_a ul{
+	width: 100%;
+	display: block;
+	top: 33px;
+	position: absolute;
+	z-index: 1040;
+	left: 0;
+	padding:10px 0;
+	background: #fff;
+	border: 1px #eee solid;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+}
+.client_a ul li{
+	line-height: 25px;
+	padding: 0 10px;
+}
+.client_a ul li:hover{
+	background: #ddd;
+	color: #333;
+}
+.client_score input{
+	display: block;
+	width: 100%;
+	border: none;
+	outline: none;
+}
+.client_label_list span,.group_label_list span{
+	position: relative;
+	padding: 0px 10px;
+	color: #ff7a53;
+	border-radius: 5px;
+	margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    border: 1px #ff7a53 solid;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.client_label_list span a,.group_label_list span a{
+	color: #ff7a53;
+}
+.section-leb h2.top{
+	margin-bottom: 10px;
+}
+.client_label_list span i,.group_label_list span i{
+	font-style: normal;
+	position: absolute;
+	cursor: pointer;
+	width: 13px;
+	height: 13px;
+	top: -6.5px;
+	right: -6.5px;
+	background: url(../img/icon-back.png) no-repeat right center;
+	border-radius: 50%;
+	display: none;
+}
+.client_label_list span:hover i
+,.group_label_list span:hover i{
+	display: block;
+}
+.edit-btns{
+	width: 100%;
+    padding: 10px;
+    background: #f2f4f5;
+    border-top: 1px solid #dee3e4;
+    border-bottom: 1px solid #dee3e4;
+    border-radius: 0 0 3px 3px;
+    display: none;
+    margin-bottom: 10px;
+}
+.edit-btns .active{
+	background: #3291c8;
+    color: #ffffff;
+    margin-right: 15px;
+    padding: 5px 12px;
+}
+.edit-btns .cancel{
+	background: #fff;
+    padding: 5px 12px;
+}
+.markils_more{
+	position: absolute;
+	bottom: 10px;
+	right: 15px;
+	cursor: pointer;
+}
+.Group .client_right span{
+	border-color: #3ab9f6;
+}
+.Group .client_right span a{
+	color: #3ab9f6;
+}
+
+.score .client_rights{
+	min-height: 35px;
+	height: auto;
+	margin-top: 15px;
+}
+.score .score_fen{
+	font-size: 40px;
+	color: #798cac;
+	text-indent: 30px;
+	border-bottom: 1px #ddd dashed;
+}
+.score .client_rights .client_label_list
+,.score .client_rights .client_label_add
+,.Group .client_label_list
+,.Group .client_label_add{
+	display: inline;
+}
+.client_label_add{
+	
+}
+.Group .client_right{
+	min-height:35px;
+	height:auto;
+	
+}
+.score .client_rights .client_label_add span
+,.Group .client_label_add span{
+	padding: 0px 10px;
+	color: #999;
+	border-radius: 5px;
+	margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    border: 1px #999 solid;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.score .client_rights .client_label_add span a
+,.Group .client_label_add span a{
+	color: #999;
+}
+.score .client_em{
+	margin-top: 15px;
+}
+.score .client_em span{
+	display: inline-block;
+	padding: 0 10px;
+	line-height: 30px;
+	height: 30px;
+	background: #ffa4a4;
+	border-radius: 5px;
+	color: #fff;
+}
+.score .client_event span{
+	background: #86ebae;
+}
+/* .client_btn>.client_rela{
+	display: none;
+}
+.client_btn>.client_rela:nth-of-type(-n+5){
+	display: block;
+} */
+.client_change:focus{
+	border: none;
+}
+/*添加标签弹窗*/
+.client_label_add_list{
+	position: absolute;
+	top: 35px;
+	left: 0;
+	width: 100%;
+	padding: 15px 30px;
+	background: #fff;
+	border: 1px #ddd solid;
+	z-index: 105;
+	box-shadow: 0 0 15px #ddd;
+	display: none;
+}
+.client_label_add_fu{
+	position: relative;
+}
+.shutdown{
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	background: url(../img/shutdown.png) no-repeat center center;
+	background-size: 100% 100%;
+}
+.client_label_add_fu h4{
+	font-size: 18px;
+	color: #333;
+	font-weight: 300;
+}
+.add_list span{
+	position: relative;
+	padding: 0px 10px;
+	color: #ff7a53;
+	border-radius: 5px;
+	margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    border: 1px #ff7a53 solid;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.add_list span i{
+	font-style: normal;
+	position: absolute;
+	cursor: pointer;
+	width: 13px;
+	height: 13px;
+	top: -6.5px;
+	right: -6.5px;
+	background: url(../img/icon-back.png) no-repeat left center;
+	border-radius: 50%;
+	display: none;
+}
+.add_list span a{
+	color: #fdb831;
+}
+.add_list span.off i{
+	display: block;
+}
+.add_btn{
+	margin-top: 10px;
+	text-align: center;
+}
+.add_btn button{
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	background: #6e91c9;
+	border-radius: 5px;
+	color: #fff;
+	border: none;
+}
+.modify_hover:hover{
+    background: url(../img/modify.png) no-repeat right center;
+    background-size: 14px 14px;
+    padding-right: 20px;
+}
+@media (min-width: 1200px){
+	.container {
+	    width: 100%;
+	}
+}

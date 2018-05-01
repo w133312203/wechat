@@ -1,0 +1,91 @@
+.fans{
+	width: 100%;
+}
+.fans ul{
+}
+.fans ul li:last-child{
+	padding-bottom: 20px;
+}
+.fans li{
+	float: left;
+	width: 50%;
+	border-left: 1px #ddd solid;
+	padding: 20px 15px 0px 20px;
+}
+.fans ul li:nth-child(2n+1){
+	border-left: none;
+}
+.fans li dl{
+	position: relative;
+	padding-left: 76px;
+	margin: 0;
+}
+.fans li dt{
+	width: 66px;
+	height: 66px;
+	float: left;
+	margin-left: -76px;
+}
+.fans li dt span{
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.fans li dt img{
+	width: 100%;
+	vertical-align: middle;
+}
+.fans li dd{
+	float: left;
+	font-size: 14px;
+	color: #666;
+	width: 100%;
+	height:70px;
+}
+.fans li dd .fansName{
+	position: relative;
+	padding-right: 100px;
+	padding-top: 10px;
+}
+.fans li dd .fansName span{
+	position: absolute;
+	right: 0;
+	top: 13px;
+	font-size: 12px;
+}
+.fanseLast {
+	text-align: right;
+	padding-right: 20px;
+}
+.jump,.fenye{
+	float: right;
+	width: auto;
+}
+.jump{
+	margin: 30px 0px;
+}
+.jump input{
+	width: 50px;
+	height: 28px;
+	border: 1px #ddd solid;
+	padding: 5px;
+	text-align: center;
+	border-radius: 3px;
+}
+.fenyex a,
+.contstr a{
+	cursor: default;
+}
+#channelDiv .fans_onp .row{
+	margin:0;
+}
+#channelDiv .fans ul{
+	padding:0;
+	overflow:hidden;
+	border-bottom:1px #ddd solid;
+}
+#channelDiv .fenye ul{
+	border:0;
+}

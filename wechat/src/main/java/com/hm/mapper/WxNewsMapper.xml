@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxNewsDao">
+	<insert id="save" parameterType="WxNews" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_news 
+			(keywordsId,title,description,picUrl,url,sortLevel) 
+		values 
+			(#{keywordsId},#{title},#{description},#{picUrl},#{url},#{sortLevel})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from wx_news where id = #{id}
+	</delete>
+	<update id="update" parameterType="WxNews">
+		update wx_news set title = #{title},description = #{description},picUrl = #{picUrl},url = #{url},sortLevel = #{sortLevel} where id = #{id}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxNews">
+    	select id,keywordsId,title,description,picUrl,url,sortLevel from wx_news where id=#{id}
+    </select>
+    <select id="findList" resultType="WxNews">
+		select id,keywordsId,title,description,picUrl,url,sortLevel from wx_news where keywordsId = #{keywordsId} order by sortLevel
+	</select>
+	<select id="findNewsList" resultType="java.util.Map">
+		select id,keywordsId,title,description,picUrl,url,sortLevel from wx_news where keywordsId = #{keywordsId} 
+		<if test="search!=null and search!=''">
+			and title like #{search} 
+		</if>
+		 limit #{first},#{max}
+	</select>
+	<select id="findNewsCount" resultType="java.lang.Integer">
+		select count(id) from wx_news where newsKeyId = #{newsKeyId} 
+		<if test="search!=null and search!=''">
+			and title like #{search} 
+		</if>
+	</select>
+</mapper>

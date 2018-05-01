@@ -1,0 +1,327 @@
+/*---------- dashboard ----------*/
+.dashboard h1.thin{
+	font-size:26px; color: #3c3c3c;
+}
+.dash-controls{
+	margin-top: 20px;
+}
+.dash-controls .dash-group i.fa{
+	color: #505050; font-size: 16px; vertical-align: middle;
+}
+.dash-controls .btn-group{margin-left: 4px;}
+.dash-controls .btn-group button.btn{
+    text-align: center; vertical-align: middle; cursor: pointer; 
+    background-image: none; font-weight: 500;
+    background-color: #f2f4f5; border: 1px solid #bec8c8;border-radius: 3px;   
+    padding: 6px 18px; margin-bottom: 0px;
+    font-size: 13px; color: #505050; line-height: 1.28;
+    
+    overflow:hidden; text-overflow:ellipsis; -o-text-overflow:ellipsis; white-space:nowrap;
+}
+.dash-controls .btn-group .dropdown-menu{
+	overflow-x: hidden; overflow-y: auto;
+	background: #fafafa; background-color: #fafafa;
+	border: 1px solid #969696; /* padding: 8px 0px;*/
+	box-shadow: 0 4px 11px rgba(0,0,0,0.2);
+	max-height: 162px;
+}
+.dash-controls .dropdown-menu>li:hover a{
+	background: #3875d7; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 3px;
+	color: #ffffff;
+}
+.top-navigation .dash-controls .dropdown-menu>li>a{
+	padding: 0px 10px;
+}
+
+#dash-time{
+	position: relative; margin-top: 33px; margin-left:0px;
+	/*border: 1px solid #969696;*/ float: left; display: inline-block;
+	box-shadow: 0 4px 11px rgba(0,0,0,0.2);
+}
+#dash-time .btn-group{
+	display: inline-block; margin-left: 0px;
+	position: absolute; left: 0; border: 1px solid #969696; z-index: 99;
+}
+#dash-time .btn-group button{
+	position: absolute; top: -33px; left: -1px;
+}
+#dash-time .btn-group .dropdown-menu{
+	border:none; box-shadow: none; margin: 0px;
+	/*border: 1px solid #969696;*/
+	position: initial;
+}
+#dashtbox i.fa{
+	float: left; margin: 8px 7px 0px 90px;
+}
+#dash-time .search{
+	position: relative; display: none;
+}
+#dash-time .search input{
+	border: none; border-bottom:1px solid #bcc3c5; padding: 2px 0px; text-indent: 1.5em;
+	width: 100%; color: #505050;
+}
+#dash-time .search i.fa{
+	font-size: 14px; color: #505050; position: absolute; top: 3px; left: 2px; padding: 0; margin: 0;
+}
+
+/*-------------------- dash-left 左------------------*/
+.dash-left .forecast,
+.dash-left .productivity,
+.dash-left .Pipeline,
+.dash-left .reports{
+	background: #ffffff;
+	border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+	padding-top: 5px; padding-bottom: 30px; margin-bottom: 12px;
+}
+.dash-left h1.title{
+	font-size: 24px; color: #3c3c3c; font-weight: 200;
+}
+.dash-left .forecast .no-deal{
+	width: 100%; text-align: center; font-size: 14px; color: #6d787c;
+}
+.dash-left .forecast .lineMain {font-size:18px; float:right;}
+.dash-left .forecast .no-deal p{margin: 50px 0px 40px 0px;}
+.dash-left .forecast .no-deal button{
+	background: none; background-color: none; font-size: 13px;
+	border: 1px solid #dee3e4; color: #505050; outline: none;
+}
+.dash-left .forecast .have-deal{
+	width: 100%;
+}
+
+.have-deal .forecast-deal{
+	width: 100%; display: inline-block; border-bottom: 1px solid #e9eced;
+	padding-bottom: 10px; padding-top: 30px; position: relative;
+}
+.have-deal p.bottom{
+	margin: 0; padding: 0; font-size: 14px; color: #6d787c; margin-top: 12px;
+}
+.have-deal .forecast-deal ul{padding: 0; margin: 0;}
+.have-deal .forecast-deal ul li{
+	float: left; margin-left: 5px; text-align: left; height: 90px;
+	cursor: pointer;
+}
+.have-deal .forecast-deal ul li:hover,
+.have-deal .forecast-deal ul li.active{
+	background: rgba(0, 0, 0, 0.02);
+}
+.have-deal .forecast-deal ul li.first{
+	width: 130px;
+}
+.have-deal .forecast-deal ul li.num01{width: 14.5%}
+.have-deal .forecast-deal ul li.num02{width: 17%;}
+.have-deal .forecast-deal ul li.num03{width: 19%}
+.have-deal .forecast-deal ul li.num04{width: 21%}
+.have-deal .forecast-deal ul li.num05{width: 23%}
+.have-deal .forecast-deal ul li.second{
+	width: 280px;
+}
+.have-deal .forecast-deal ul li h5{
+	font-size: 14px; color: #3c3c3c; font-weight: 200; font-style: italic; margin: 0px; margin-bottom: 10px;
+	padding-bottom: 12px;
+}
+.have-deal .forecast-deal ul li h6{
+	font-size: 12px; color: #505050; font-weight: 500; margin: 0px;
+}
+.have-deal .forecast-deal ul li h5{
+	border-bottom: 2px solid #d0fd79;
+}
+.have-deal .forecast-deal ul li.second h5{
+	border-bottom: 2px solid #91e12d;
+}
+
+.have-deal .forecast-deal div.line{
+	width: 3px; height: 216px; border-left: 1px solid #3291c8;
+	position: absolute; bottom: 0px; right: 60px;
+}
+.forecast-deal div.line .linebox{
+	width: 100%; height: 100%; position: relative;
+}
+.forecast-deal div.line .linetop span.name{
+	font-size: 12px; color: #6d787c; font-weight: 500;
+	position: absolute; top: -15px; right: 10px;
+}
+.forecast-deal div.line .linetop span.price{
+	font-size: 12px; color: #6d787c;position: absolute; top: -15px; left: 10px;
+	width: 200px;
+}
+.forecast-deal div.line .linetop i{
+	width: 8px; height: 8px; display: inline-block; background: #3291c8;
+	border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%;
+	position: absolute; top: -11px; left: 50%; margin-left: -5px;
+}
+.forecast-deal div.line .lineMain{
+	width: 220px;  display:inline-block;text-align: right; color: #6d787c;
+	position: absolute; top: 50px; right: -40px; background: #FFFFFF; padding: 8px 10px;
+}
+.forecast-deal div.line .lineMain p,
+.forecast-deal div.line .lineMain h2{
+	margin: 0; padding: 0;
+}
+.have-deal .tablist{display: none;}
+.have-deal .tablist .ibox{margin: 0px;}
+.have-deal .tablist .ibox-title{
+	border: none; margin: 0; min-height: 35px; height: 35px;padding-left: 0px;
+}
+.have-deal .tablist .ibox-title h5{
+	margin: 0;font-size: 18px; color: #6d787c; font-weight: 200; 
+}
+.have-deal .tablist .ibox-content{
+	border: none; padding:0px;
+}
+.have-deal .tablist .ibox-content>.dataTables_wrapper{
+	padding-bottom: 0px;
+}
+.have-deal .tablist .ibox-content table th{
+	outline: none;
+}
+
+/*---------------- productivity ---------------*/
+.productivity .pronav,
+.Pipeline .pronav{
+	width: 100%; display: inline-block; padding: 0px;
+}
+.productivity .pronav dl.nav-tabs,
+.Pipeline .pronav dl.nav-tabs{
+	padding: 0px 20px; border: none; padding-bottom: 15px; margin-top: 8px;
+}
+.productivity .pronav .tabs-container dl dd,
+.Pipeline .pronav .tabs-container dl dd{
+	width: 22%; float: left; text-align: center; margin: 0px 1.5%;	
+	padding: 0px 10px;
+}
+.productivity .pronav .tabs-container dl dd>a,
+.Pipeline .pronav .tabs-container dl dd>a{
+	height: 105px;
+}
+.productivity .pronav .tabs-container dl dd:hover a,
+.productivity .pronav .tabs-container dl dd.active a,
+.productivity .pronav .tabs-container dl dd.active:hover a,
+.Pipeline .pronav .tabs-container dl dd:hover a,
+.Pipeline .pronav .tabs-container dl dd.active a,
+.Pipeline .pronav .tabs-container dl dd.active:hover a{
+	background: rgba(0,0,0,0.02);
+}
+.productivity .pronav .tabs-container dl dd>a,
+.productivity .pronav .tabs-container dl dd:hover>a,
+.productivity .pronav .tabs-container dl dd.active>a,
+.productivity .pronav .tabs-container dl dd.active:hover>a,
+.Pipeline .pronav .tabs-container dl dd>a,
+.Pipeline .pronav .tabs-container dl dd:hover>a,
+.Pipeline .pronav .tabs-container dl dd.active>a,
+.Pipeline .pronav .tabs-container dl dd.active:hover>a{
+	color: #899396; font-weight: 200; font-size: 12px;
+	border: none; border-radius: 0px; margin: 0; padding: 0;
+}
+.productivity .pronav .tabs-container dl dd>a p,
+.Pipeline .pronav .tabs-container dl dd>a p{
+	padding-top: 27px; position: relative;
+}
+	
+.pronav .tabs-container dl.nav-tabs dd p i.fa{
+	margin-right:5px;
+	margin-right:5px !important;
+}
+.pronav .tabs-container dl dd>a p span.tooltips{
+	font-size: 12px; color: #ffffff;
+	width: 168px;text-align: center; background: rgba(0,0,0,0.7); background-color: rgba(0,0,0,0.7);
+	border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+	padding: 6px; position: absolute; bottom: 30px; left: 50%; margin-left: -84px;display: none;
+}
+.pronav .tabs-container dl dd>a p span.tooltips i.triangles{
+	display: inline-block;
+    position: absolute; bottom: -10px; left: 50%; margin-left: -10px;
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid rgba(0,0,0,0.7);
+}
+.pronav .tabs-container dl dd>a p:hover span.tooltips{
+	display: inline-block;
+}
+.productivity .pronav .tabs-container dl dd>a h5,
+.Pipeline .pronav .tabs-container dl dd>a h5{
+	font-size: 16px; color:#3c3c3c; font-weight: 200;
+}
+.pronav .tabs-container .panel-body{
+	border: none; border-top: 1px solid #e7eaec; padding:20px 0px 0px 0px;
+}
+.pronav .tabs-container .panel-body .pro-table{
+	width: 100%;
+}
+
+/*-------------- Pipeline ---------------*/
+.Pipeline .pronav .tabs-container dl dd{position: relative;}
+.Pipeline .pronav .tabs-container dl dd>div.icon{
+	position: absolute; top: 50%; left: -18px; width: 20px; height: 20px; text-align: center;
+	margin-top: -10px;
+}
+.Pipeline .pronav .tabs-container dl dd>div.icon>i{
+	font-size: 20px; color: #d7d7d7; font-weight: 200;
+}
+
+/*-------------- reports ----------------*/
+.reports .rep-chart{
+	width: 100%; display: inline-block; padding: 8px; border:1px solid #e9eced;
+	border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+	margin-top: 25px;
+	min-height: 200px;
+}
+.reports .rep-text{
+	width: 100%; display: inline-block; text-align: center; padding-top: 30px; padding-bottom: 10px;
+}
+.reports .rep-text p{
+	font-size: 13px; color: #505050; margin-bottom: 20px;
+}
+.reports .rep-text button.btn{
+	background:#f7761f; background-color: #f7761f;
+	font-size: 16px; color: #ffffff; padding: 10px 18px;
+}
+
+/*-------------------------------- dash-right 右 ------------------------------*/
+.dash-right .start-crm{
+	width: 100%; display: inline-block; text-align: center;
+}
+.dash-right .start-crm button.btn{
+	width: 100%; background:#f7761f; background-color: #f7761f;
+	font-size: 14px; color: #ffffff; padding: 6px 5px;
+}
+.dash-right dl dt{
+	display: inline-block; width: 100%; padding: 25px 0px 10px 0px;
+	font-size: 14px; color: #6d787c; font-weight: 200;
+}
+.dash-right dl dd{
+	display: inline-block; width: 100%; margin-top: 10px;
+}
+.dash-right dl dd div.headimg{
+	width: 32px; height: 32px; float: left;
+}
+.dash-right dl dd div.headimg img{
+	width: 100%; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+}
+.dash-right dl dd div.start-text{
+	width: 86%; float: left; padding-left: 15px;
+}
+.dash-right .start-text .links,
+.dash-right .start-text p.text{
+	font-size: 13px; color: #545c5f; margin: 0; padding: 0;
+}
+.dash-right .start-text p.text{
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+}
+.dash-right .start-text .links a{color: #545c5f;}
+.dash-right .start-text p.time{
+	font-size: 13px; color: #8c8c8c; margin: 0; padding: 0; margin-top: 3px;
+}
+.dash-right .start-text p.time a{
+	float: right; font-size: 14px; color: #505050; margin-top: -5px; margin-right: 3px;
+}
+.dash-right .start-text .links a:hover,
+.dash-right .start-text p.time a:hover{
+	color: #3291c8;
+}
+
+

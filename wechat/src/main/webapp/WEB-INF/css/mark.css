@@ -1,0 +1,236 @@
+.mark_posi{
+	position: relative;
+}
+.mark_tianjia{
+	cursor:pointer;
+	background: #f7f8fa;
+	padding: 0 8px;
+	color: #666;
+	height: 28px;
+	line-height: 28px;
+	border: 1px #e0e7ef solid;
+	border-radius: 3px;
+	/*box-shadow: 0 0 2px #666;*/
+}
+.mark_tianjia span{
+	font-size:14px;
+	color:#666;
+	height: 28px;
+	line-height: 28px;
+	display: inline-block;
+	background: url(../img/menu.png) no-repeat 0 5px;
+	text-indent: 25px;
+}
+/*.mark_tianjia .mark_icon{
+	float: right;
+	display: block;
+}
+.mark_tianjia .mark_icon:before{
+	content: "\f107";
+}
+.mark_tianjia .mark_icon.off:before{
+	content: "\f106";
+}*/
+.mark_list{
+	width:100%;
+	/*display: none;*/
+}
+.mark_list a.mark_host{
+	color: #0091ae;
+	display: block;
+	margin: 10px 0;
+}
+.mark_list .mark_search{
+	width: 100%;
+	padding: 5px;
+	font-size: 16px;
+	border-radius: 3px;
+	border: 1px #ddd solid;
+	box-shadow: none;
+	text-shadow: none;
+}
+.mark_list ul.mark_net{
+	width: 100%;
+	margin: 10px 0;
+	max-height: 500px;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+.mark_list .mark_net>li{
+	position: relative;
+	color: #666;
+	margin-bottom: 10px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+.mark_list ul.mark_net>li .mark_erji{
+	padding: 5px 15px;
+	position: relative;
+	/*background: #f7f8fa;*/
+	/*border: 1px #ced3d9 solid;*/
+}
+.mark_list ul.mark_net>li:hover .mark_erji
+,.mark_list ul.mark_net>li.off .mark_erji{
+	background: #f7f8fa;
+	color: #6d90c8;
+}
+.mark_list ul.mark_net>li .mark1_icon{
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	top: 5px;
+	right: 0px;
+	display: block;
+}
+.mark_list ul.mark_net>li .mark1_icon:before{
+	content: "\f107";
+	display: none;
+}
+.mark_list ul.mark_net>li.off .mark1_icon:before{
+	content: "\f107";
+	display: block;
+}
+.mark_list ul.mark_net>li:hover .mark1_icon:before{
+	content: "\f107";
+	display: block;
+}
+/*.mark_list ul.mark_net>li .mark1_icon:before{
+	content: "\f107";
+}*/
+.select_stage li,.select_group li{
+	padding: 5px 15px;
+}
+.select_stage li:hover,.select_group li:hover{
+	cursor: pointer;
+	color: #6d90c8;
+}
+.select_score li{
+	padding: 5px;
+}
+.select_score li label{
+	display: block;
+	position: relative;
+	padding-left: 75px;
+	margin-bottom: 0;
+}
+.select_score li label span{
+	position: absolute;
+	left: 15px;
+	height: 30px;
+	line-height: 30px;
+	top: 0;
+}
+.select_score li input[type="text"]{
+	width: 100%;
+	padding: 5px;
+	border: 1px #ddd solid;
+	box-shadow: none;
+	text-shadow: none;
+}
+.select_score li:hover label span
+,.select_score li.off label span{
+	color: #6d90c8;
+}
+.mark_ops{
+	display: none;
+}
+.select_stage li,.select_group li{
+	position: relative;
+	padding-left: 30px;
+}
+.mark_ops ul li .mark_icon{
+	display: block;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 9px;
+	left: 15px;
+	border:2px #ccc solid;
+	border-radius: 50%;
+}
+.mark_ops ul li.off .mark_icon{
+	border-color: #6d90c8;
+}
+.mark_ops ul li .mark_icon span{
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.mark_ops ul li .mark_icon span i{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 3px;
+	height: 3px;
+	background: transparent;
+	border-radius: 50%;
+	display: block;
+}
+.mark_ops ul li.off .mark_icon span i{
+	background: #6d90c8;
+}
+.mark_ops ul li.off{
+	color: #6d90c8;
+}
+.mark_filter{
+	display: none;
+	width: 100%;
+	padding-bottom: 20px;
+}
+.mark_filter span{
+	display: block;
+	margin: 0 15px;
+	padding: 5px 0;
+	background: #6e91c9;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.mark_filter_list div{
+	width: 100%;
+	padding: 5px 10px 5px 5px;
+	position: relative;
+	background: #ecf1f7;
+	margin-bottom: 10px;
+}
+.mark_filter_list div span.mark_remove_filter{
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	font-size: 14px;
+	right: 8px;
+	top: 3px;
+	cursor: pointer;
+}
+.fixed-table-toolbar{
+	margin-top:15px;
+	height:54px;
+}
+.fixed-table-container{
+	margin-top:5px;
+}
+.mark_h1{
+	padding: 10px 15px 20px;
+	font-size: 24px;
+	color: #6c93cc;
+	line-height: 40px;
+    text-indent: 15px;
+}
+.mark_horizontal{
+	position: absolute;
+	top: 110px;
+	left: 15px;
+	right: 15px;
+	height: 1px;
+	background: #eee;
+	display: block;
+}
+.gray-bg{
+	position: relative;
+	background:#fff;
+}

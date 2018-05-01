@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxChannelDao">
+	<select id="findChannelList" resultType="java.util.Map">
+		select id,name,newuser,olduser,status,createTime from wx_channel 
+		where 1=1 
+		<if test="name !=null and name !=''">
+	     and name like #{name}
+		</if>
+		<if test="id !=null and id !=''">
+	     and id= #{id}	
+		</if>
+		order by createTime desc limit #{first},#{max}
+	</select>
+	<select id="findChannelCount" resultType="java.lang.Integer">
+		select count(id) from wx_channel 
+		where 1=1 
+		<if test="name !=null and name !=''">
+	     and name like #{name}
+		</if>
+		<if test="id !=null and id !=''">
+	     and id= #{id}	
+		</if>
+		order by createTime desc
+	</select>
+	<select id="findNameById" resultType="java.util.Map">
+		select id,name,newuser,olduser,status,createTime,url from wx_channel
+		where id=#{id}
+		
+	</select>
+	<insert id="save" parameterType="WxChannel" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_channel 
+			(id,name,newuser,olduser,status,createTime) 
+		values 
+			(#{id},#{name},#{newuser},#{olduser},#{status},#{createTime})
+	</insert>
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from wx_channel where id = #{id}
+	</delete>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxChannel">
+    	select id,name,newuser,olduser,status,createTime from wx_channel where id=#{id}
+    </select>
+    <update id="update" parameterType="WxChannel">
+		update wx_channel set url = #{url} where id = #{id}
+	</update>
+	<update id="updateStatus" parameterType="WxChannel">
+		update wx_channel set status = #{status} where id = #{id}
+	</update>
+	
+    <select id="newUserSubcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	select  count(status) FROM  wx_user_channel_relation wxr where wxr.channelid IN(SELECT id FROM wx_channel wxc WHERE wxc.name=#{name}) and wxr.status=2 
+    </select>
+    <select id="newOldSubcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	select count(status) FROM  wx_user_channel_relation wxr where wxr.channelid IN(SELECT id FROM wx_channel wxc WHERE wxc.name=#{name}) and wxr.status=4 
+    </select>
+    <select id="newUserUnubcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	select  count(status) FROM  wx_user_channel_relation wxr where wxr.channelid IN(SELECT id FROM wx_channel wxc WHERE wxc.name=#{name}) and wxr.status=1 
+    </select>
+    <select id="newOldUnsubcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	select  count(status) FROM  wx_user_channel_relation wxr where wxr.channelid IN(SELECT id FROM wx_channel wxc WHERE wxc.name=#{name}) and wxr.status=3 
+    </select>
+    <select id="findChannelListById" resultType="java.util.Map">
+		select id,name,newuser,olduser,status,createTime,url from wx_channel 
+		where 1=1 
+		<if test="id !=null and id !=''"> 
+	     and id= #{id}	
+		</if>
+	</select>
+    <select id="findChannelListByName" resultType="java.util.Map">
+		select id,name,newuser,olduser,status,createTime,url from wx_channel 
+		where name= #{name}	
+	</select>
+	<select id="findChannelListByDay" resultType="Result">
+			select 
+			      DATE_FORMAT(wxr.create_time,'%Y/%m/%d') days,
+			      COUNT(if(wxr.status=1,true,null)) count1,
+			      COUNT(if(wxr.status=2,true,null)) count2,
+			      COUNT(if(wxr.status=3,true,null)) count3,
+			      COUNT(if(wxr.status=4,true,null)) count4 
+			FROM  
+			      wx_user_channel_relation wxr 
+			where 
+			      wxr.channelid = #{id}  
+			group by days
+			order by days desc 
+			limit #{first},#{max} 
+	</select>
+	<select id="findChannelListByDayAndId" resultType="Result">
+			select 
+			      DATE_FORMAT(wxr.create_time,'%Y/%m/%d') days,
+			      COUNT(if(wxr.status=1,true,null)) count1,
+			      COUNT(if(wxr.status=2,true,null)) count2,
+			      COUNT(if(wxr.status=3,true,null)) count3,
+			      COUNT(if(wxr.status=4,true,null)) count4 
+			FROM  
+			      wx_user_channel_relation wxr 
+			where wxr.channelid = #{id}  
+			group by days
+	</select>
+</mapper>

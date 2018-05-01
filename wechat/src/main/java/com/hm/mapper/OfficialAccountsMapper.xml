@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.OfficialAccountsDao">
+
+	<insert id="save" parameterType="OfficialAccounts"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into wx_official_accounts
+		(euserId,headImage,name,account,originalId,level,appId,appSecret,token,qrcode,summary,status,createTime,code,serverUrl)
+		values
+		(#{euserId},#{headImage},#{name},#{account},#{originalId},#{level},#{appId},#{appSecret},#{token},#{qrcode},#{summary},#{status},#{createTime},#{code},#{serverUrl})
+	</insert>
+	
+	<update id="deleteById" parameterType="OfficialAccounts">
+		update
+		wx_official_accounts
+		set status = 0 where id = #{id}
+	</update>
+	
+	<update id="deleteByEuserId" parameterType="OfficialAccounts">
+		update
+		wx_official_accounts
+		set status = 0 where id = #{id} and euserId = #{euserId}
+	</update>
+	
+	<update id="update" parameterType="OfficialAccounts">
+		update wx_official_accounts
+		<trim prefix="set" suffixOverrides="," suffix=" where id = #{id} ">
+			<if test="euserId !=null and euserId !=''">euserId = #{euserId},</if>
+			<if test="headImage !=null and headImage !=''">headImage = #{headImage},</if>
+			<if test="name !=null and name !=''">name = #{name},</if>
+			<if test="account !=null and account !=''">account = #{account},</if>
+			<if test="originalId !=null and originalId !=''">originalId = #{originalId},</if>
+			<if test="level !=null and level !=''">level = #{level},</if>
+			<if test="appId !=null and appId !=''">appId = #{appId},</if>
+			<if test="appSecret !=null and appSecret !='' ">appSecret = #{appSecret},</if>
+			<if test="serverUrl !=null and serverUrl !=''">serverUrl = #{serverUrl},</if>
+			<if test="token !=null and token !=''">token = #{token},</if>
+			<if test="qrcode !=null and qrcode !=''">qrcode = #{qrcode},</if>
+			<if test="summary !=null and summary !=''">summary = #{summary},</if>
+			<if test="status !=null and status !=''">status = #{status},</if>
+			<if test="code !=null and code !=''">code = #{code},</if>
+		</trim>
+	</update>
+	
+	<select id="findById" parameterType="java.lang.Integer"
+		resultType="OfficialAccounts">
+		select
+		id,euserId,headImage,name,account,originalId,level,appId,appSecret,serverUrl,token,qrcode,summary,createTime,status,code
+		from wx_official_accounts where id=#{Id} and status=1
+	</select>
+	
+	<select id="findByCode" parameterType="java.lang.String"
+		resultType="OfficialAccounts">
+		select
+		id,euserId,headImage,name,account,originalId,level,appId,appSecret,serverUrl,token,qrcode,summary,createTime,status,code
+		from wx_official_accounts where code=#{code} and status=1
+	</select>
+	
+	<select id="findByAppId" parameterType="java.lang.String"
+		resultType="OfficialAccounts">
+		select
+		id,euserId,headImage,name,account,originalId,level,appId,appSecret,serverUrl,token,qrcode,summary,createTime,status,code
+		from wx_official_accounts where appId=#{appId} and status=1
+	</select>
+	
+	<select id="findByOriginalId" parameterType="java.lang.Integer"
+		resultType="OfficialAccounts">
+		select
+		id,euserId,headImage,name,account,originalId,level,appId,appSecret,serverUrl,token,qrcode,summary,createTime,status,code
+		from wx_official_accounts where originalId=#{originalId} and status=1
+	</select>
+	
+	<select id="findListByEuserId" parameterType="java.lang.Integer"
+		resultType="OfficialAccounts">
+		select
+		id,euserId,headImage,name,account,originalId,level,appId,appSecret,serverUrl,token,qrcode,summary,createTime,status,code
+		from wx_official_accounts where euserId=#{euserId} and status=1
+	</select>
+	
+	<select id="findAllList" resultType="OfficialAccounts">
+		select
+		id,euserId,appId,appSecret,status,code from wx_official_accounts
+		where
+		status=1
+	</select>
+	
+	<select id="findList" parameterType="java.lang.Integer"
+		resultType="java.util.Map">
+		select id,name from wx_official_accounts where
+		euserId=#{euserId} and
+		status=1
+	</select>
+	
+</mapper>

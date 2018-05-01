@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxSystemReplyDao">
+	<insert id="save" parameterType="WxSystemReply" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_system_reply 
+			(accountId,type,keywords) 
+		values 
+			(#{accountId},#{type},#{keywords})
+	</insert>
+	<update id="update" parameterType="WxSystemReply">
+		update wx_system_reply set keywords = #{keywords} where accountId = #{accountId} and type = #{type}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxSystemReply">
+    	select id,accountId,type,keywords from wx_system_reply where accountId = #{accountId} and type = #{type}
+    </select>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxGlobalParamDao">
+	<insert id="save" parameterType="WxGlobalParam" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_global_param 
+			(euserId,accountId,accessToken,expirationTime) 
+		values 
+			(#{euserId},#{accountId},#{accessToken},#{expirationTime})
+	</insert>
+	<update id="update" parameterType="WxGlobalParam">
+		update wx_global_param set accessToken=#{accessToken},expirationTime=#{expirationTime} where accountId=#{accountId}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxGlobalParam">
+    	select id,euserId,accountId,accessToken,expirationTime from wx_global_param where id=#{id}
+    </select>
+	<insert id="saveList" parameterType="java.util.List">
+		insert into wx_global_param (euserId,accountId,accessToken) values 
+		<foreach collection="paramList" index="index" item="item" separator=",">
+			(#{item.euserId},#{item.accountId},#{item.accessToken},#{item.expirationTime})
+		</foreach>
+	</insert>
+	<update id="updateList" parameterType="java.util.List">
+		<foreach collection="paramList" index="index" item="item" separator=";">
+			update wx_global_param set accessToken=#{item.accessToken},expirationTime=#{item.expirationTime} where accountId=#{item.accountId}
+		</foreach>
+	</update>
+    <select id="findByAccountId" parameterType="java.lang.Integer" resultType="WxGlobalParam">
+    	select id,euserId,accountId,accessToken,expirationTime from wx_global_param where accountId=#{accountId}
+    </select>
+</mapper>

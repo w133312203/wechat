@@ -1,0 +1,57 @@
+.email{
+	overflow: hidden;
+}
+.email_top{
+	float: left;
+	padding: 10px 15px;
+}
+.email_top p,.email_top div{
+	display: inline-block;
+}
+.email_top p{
+	font-size: 13px;
+	padding: 5px 10px;
+	background: #e3e8eb;
+	font-weight: 500;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.email_top div{
+	margin-left: 20px;
+	font-weight: 600;
+}
+.email_top div span{
+	display: inline-block;
+	padding: 5px 10px;
+	border: 1px #ced2d1 solid;
+	border-radius: 5px;
+	margin-left: 10px;
+	font-weight: 300;
+}
+.customize{
+	padding: 10px;
+    height: 54px;
+    float: right;
+}
+.customize span {
+    cursor: pointer;
+    display: inline-block;
+    background: #6c93cc;
+    border-radius: 3px;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.customize span.col_01{
+	background: #5eb65f;
+}
+.customize span.col_02{
+	background: #5eaae4;
+}
+.customize span.col_03{
+	background: #e4e9ec;
+	color: #666;
+}
+.customize span.col_04{
+	background: #6c91c6;
+}

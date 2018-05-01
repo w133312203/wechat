@@ -1,0 +1,31 @@
+/*导航下拉菜单*/
+#nav_rela .nav_client{
+	position: relative;
+}
+#nav_rela .nav_client ul{
+	position: absolute;
+	background: #333;
+	min-width: 100%;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	display: none;
+}
+#nav_rela .nav_client ul li{
+	display: block;
+	padding: 0 35px 0 22px;
+	height: 35px;
+	line-height: 35px;
+}
+#nav_rela .nav_client ul li a{
+	display: block;
+	color: #fff;
+}
+#nav_rela .nav_client ul li:hover{
+	background: #2b2b2b;
+}
+#nav_rela .nav_client ul li.off{
+	background: #2b2b2b;
+}
+.fixed-table-toolbar .bars{
+	margin:0;
+}

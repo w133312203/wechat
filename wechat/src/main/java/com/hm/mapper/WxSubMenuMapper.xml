@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxSubMenuDao">
+	<insert id="save" parameterType="WxMenu" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_sub_menu 
+			(accountId,menuId,`name`,type,`key`,url,appid,pagepath) 
+		values 
+			(#{accountId},#{menuId},#{name},#{type},#{key},#{url},#{appid},#{pagepath})
+	</insert>
+	<select id="findList" parameterType="java.lang.Integer" resultType="java.util.Map">
+    	select id,accountId,menuId,`name`,type,`key`,url,appid,pagepath from wx_sub_menu where menuId=#{menuId}
+    </select>
+	<delete id="deleteList" parameterType="java.lang.Integer">
+		delete from wx_sub_menu where accountId = #{accountId}
+	</delete>
+</mapper>

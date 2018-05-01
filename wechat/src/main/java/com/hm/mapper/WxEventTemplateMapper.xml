@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxEventTemplateDao">
+	<update id="update" parameterType="WxEventTemplate">
+		update wx_event_template set mark = #{mark} where id = #{id}
+	</update>
+	<select id="findList" resultType="WxEventTemplate">
+    	select id,accountId,eventId,templateId,title,content,url,runningTime,type,mark from wx_event_template where 1=1 
+    	<if test="type !=null and type !=''"> and type = #{type} </if>
+    	<if test="mark !=null and mark !=''"> and mark = #{mark} </if>
+    	order by id
+    </select>
+</mapper>

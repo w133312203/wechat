@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxTextDao">
+	<insert id="save" parameterType="WxText" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_text 
+			(keywordsId,content) 
+		values 
+			(#{keywordsId},#{content})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from wx_text where id = #{id}
+	</delete>
+	<update id="update" parameterType="WxText">
+		update wx_text set content = #{content} where keywordsId = #{keywordsId}
+	</update>
+	<select id="find" parameterType="java.lang.Integer" resultType="WxText">
+    	select id,keywordsId,content from wx_text where id=#{id}
+    </select>
+    <select id="findBykeywordsId" parameterType="java.lang.Integer" resultType="WxText">
+    	select id,keywordsId,content from wx_text where keywordsId=#{keywordsId}
+    </select>
+</mapper>

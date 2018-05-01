@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.carService.dao.CarImageDao">
+	
+	<insert id="save" parameterType="CarImage"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into hm_carService_car_image
+		(carId,headImage,type)
+		values
+		(#{carId},#{headImage},#{type})
+	</insert>
+	
+	<select id="findByCarId" resultType="CarImage">
+		select * from hm_carService_car_image where carId = #{carId}
+	</select>
+	
+	<delete id="deleteById">
+		delete from hm_carService_car_image where id = #{id}
+	</delete>
+	
+	<select id="findList" resultType="java.util.HashMap">
+		select c.* from hm_carService_car_image c where c.carId = #{carId} limit #{first},#{max}
+	</select>
+	
+	<select id="findListByType" resultType="java.util.HashMap">
+		select c.* from hm_carService_car_image c where c.carId = #{carId} and c.type = #{type} order by c.id limit #{first},#{max} 
+	</select>
+	
+	<select id="findCount" resultType="java.lang.Integer">
+		select count(c.id) from hm_carService_car_image c where c.carId = #{carId}
+	</select>
+	
+	
+</mapper>

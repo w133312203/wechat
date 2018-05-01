@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hm.dao.WxTagDao">
+	<insert id="save" parameterType="WxTag" useGeneratedKeys="true" keyProperty="id">
+		insert into wx_tag 
+			(accountId,tagId,tagName,count) 
+		values 
+			(#{accountId},#{tagId},#{tagName},#{count})
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from wx_tag where id = #{id}
+	</delete>
+	<update id="update" parameterType="WxTag">
+		update wx_tag set tagName = #{tagName} where id = #{id}
+	</update>
+	<select id="findById" parameterType="java.lang.Integer" resultType="WxTag">
+    	select id,accountId,tagId,tagName,count from wx_tag where id=#{id}
+    </select>
+    <select id="findByTagId" parameterType="java.lang.Integer" resultType="WxTag">
+    	select id,accountId,tagId,tagName,count from wx_tag where accountId=#{accountId} and tagId=#{tagId}
+    </select>
+	<select id="findList" parameterType="java.lang.Integer" resultType="WxTag">
+    	select id,accountId,tagId,tagName,count from wx_tag where accountId=#{accountId}
+    </select>
+	<insert id="saveList" parameterType="java.util.List">
+		insert into wx_tag (accountId,tagId,tagName,count) values 
+		<foreach collection="tagList" index="index" item="item" separator=",">
+			(#{item.accountId},#{item.tagId},#{item.tagName},#{item.count})
+		</foreach>
+	</insert>
+	<delete id="deleteList">
+        delete from wx_tag where accountId=#{accountId}
+	</delete>
+	
+	<select id="findTagByName"  resultType="java.util.Map">
+    	select id,accountId,tagId,tagName,count from wx_tag where tagName=#{name}
+    </select>
+</mapper>
