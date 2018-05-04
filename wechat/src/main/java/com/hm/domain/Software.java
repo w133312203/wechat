@@ -4,7 +4,7 @@ public class Software {
 
 	private Integer id;
 	
-	private Integer type;//小程序类型 0 4S店
+	private Integer type;//小程序类型 0 广汽4S店 1丰田4S点
 	
 	private Integer euserId;//企业用户Id
 

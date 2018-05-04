@@ -53,10 +53,18 @@
 																</tr>
 																<tr>
 																	<td>
-																		掌上4S店
+																		广汽长瑞4S店
 																	</td>
 																	<td>
-																		<span class="setup_btn" onclick="manager()" >管理</span>
+																		<span class="setup_btn" onclick="manager('0')" >管理</span>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		广汽丰田4S店
+																	</td>
+																	<td>
+																		<span class="setup_btn" onclick="manager('1')" >管理</span>
 																	</td>
 																</tr>
 															</table>
@@ -88,8 +96,8 @@
 		
 		<script type="text/javascript">
 			
-			function manager() {
-				window.location.href="${ctx}/software/toSoftware?name=carService";
+			function manager(type) {
+				window.location.href="${ctx}/software/toSoftware?name=carService&type="+type;
 			}
 	    </script>
 		

@@ -26,16 +26,16 @@ public class SoftwareController extends BaseCotroller{
 	}
 	
 	@RequestMapping("/toSoftware")
-	public ModelAndView toSoftware(HttpSession httpSession, String name) {
+	public ModelAndView toSoftware(HttpSession httpSession, String name, Integer type) {
 		ModelAndView mv = new ModelAndView();
 		if(!StringUtil.isEmpty(name)&&name.equals("carService")) {
-			Software software = softwareService.findByEuserId(getSessionPassport().getId(), 0);
+			Software software = softwareService.findByEuserId(getSessionPassport().getId(), type);
 			if(software!=null&&software.getEuserId().equals(getSessionPassport().getId())){
 				httpSession.setAttribute("software", software);
 				mv.setViewName("redirect:/carService/home");
 			}else if(software==null) {
 				software = new Software();
-				software.setType(0);
+				software.setType(type);
 				software.setEuserId(getSessionPassport().getId());
 				softwareService.save(software);
 				httpSession.setAttribute("software", software);
