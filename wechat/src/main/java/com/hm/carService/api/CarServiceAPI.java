@@ -268,7 +268,7 @@ public class CarServiceAPI extends BaseCotroller{
     	}
     	car.setVideoUrl(videoUrl);
     	map.put("car", car);
-    	if(imgList.size()>0) {
+    	if(imgList.size()>0&&imgList.get(0).getType()==0) {
     		map.put("img",imgList.get(0));
     	}else {
     		map.put("img","");

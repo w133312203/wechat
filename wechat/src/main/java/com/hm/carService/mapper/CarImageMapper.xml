@@ -12,7 +12,7 @@
 	</insert>
 	
 	<select id="findByCarId" resultType="CarImage">
-		select * from hm_carService_car_image where carId = #{carId}
+		select * from hm_carService_car_image where carId = #{carId} order by type
 	</select>
 	
 	<delete id="deleteById">
